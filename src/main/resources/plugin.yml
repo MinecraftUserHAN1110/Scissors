@@ -1,3 +1,5 @@
 name : Scissors
 version: 1.2.2
 main: io.github.unongmilkumk.Scissors.Main
+softdepend:
+  - ProtocolLib

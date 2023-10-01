@@ -1,6 +1,7 @@
 package io.github.unongmilkumk.Scissors;
 
 import io.github.unongmilkumk.Scissors.player.ScissorsUser;
+import io.github.unongmilkumk.Scissors.protocol.Protocol;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -15,6 +16,12 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         getLogger().info("Scissors API Plugin Enabled");
+
+        getLogger().info("Finding ProtocolLib...");
+        if (Bukkit.getPluginManager().isPluginEnabled("ProtocolLib")) {
+            getLogger().info("Sucuess to find ProtocolLib. PacketWrapping API enabled.");
+            Protocol.init(this);
+        }
         for (Player p : Bukkit.getOnlinePlayers()) {
             USERS.put(p.getUniqueId(), new ScissorsUser(p));
         }
